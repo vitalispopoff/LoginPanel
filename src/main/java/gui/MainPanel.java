@@ -52,22 +52,22 @@ public class MainPanel extends JPanel {
 
         gender = new JTextArea(genderName);
         gender.setBackground(new Color(238, 238, 238));
-        gender.setBounds(((elementWidth * tile) >> 1), tile + (tile >> 1), (tile * elementWidth) >> 1, tile);*/
+        gender.setBounds(((elementWidth * tile) >> 1), tile + (tile >> 1), (tile * elementWidth) >> 1, tile);
+
+        JButton about = new JButton("<html><p align=left><font size=" + (tile / 6) + ">About</font></p></html>");
+        about.setBounds(tile, (elementHeight * 2 + 3) * tile, elementWidth * tile, elementHeight * tile);*/
 
         Action passGenerate = new PassGenerate();
         JButton pass = new JButton(passGenerate);
         pass.setText("<html><p align=left><font size=" + (tile / 6) + ">Pass</font></p></html>");
         pass.setBounds(tile, (elementHeight + 2) * tile, elementWidth * tile, elementHeight * tile);
 
-        JButton about = new JButton("<html><p align=left><font size=" + (tile / 6) + ">About</font></p></html>");
-        about.setBounds(tile, (elementHeight * 2 + 3) * tile, elementWidth * tile, elementHeight * tile);
-
         Action resetAction = new ResetAction();
         JButton reset = new JButton(resetAction);
         reset.setText("<html><p align=left><font size=" + (tile / 6) + ">Reset</font></p></html>");
         reset.setBounds(((elementWidth + 2) * tile), (elementHeight * 5 + 4) * tile, elementWidth * tile, elementHeight * tile);
 
-       JButton submit = new JButton("<html><p align=left><font size=" + (tile / 6) + ">Submit</font></p></html>");
+        JButton submit = new JButton("<html><p align=left><font size=" + (tile / 6) + ">Submit</font></p></html>");
         submit.setBounds(((elementWidth * 2 + 3) * tile), (elementHeight * 5 + 4) * tile, elementWidth * tile, elementHeight * tile);
 /*
         JCheckBox check_1 = new JCheckBox();
@@ -94,34 +94,35 @@ public class MainPanel extends JPanel {
         check_3.setHorizontalTextPosition(LEFT);
         check_3.setVerticalTextPosition(SwingConstants.CENTER);
 
-        check_2.setSelected(true);*/
+        check_2.setSelected(true);
 
         loginField = new JTextField(logName, 32);
-        loginField.setBounds((elementWidth + 2) * tile, tile, textElementWidth * tile, elementHeight * tile);
+        loginField.setBounds((elementWidth + 2) * tile, tile, textElementWidth * tile, elementHeight * tile);*/
 
         passField = new JTextField(passName, Password.getPasswordLength());
         passField.setBounds((elementWidth + 2) * tile, (elementHeight + 2) * tile, textElementWidth * tile, elementHeight * tile);
 
-        aboutField = new JTextArea(infoName);
+/*        aboutField = new JTextArea(infoName);
         aboutField.setBounds((elementWidth + 2) * tile, (elementHeight * 2 + 3) * tile, textElementWidth * tile, elementHeight * 3 * tile);
         aboutField.setLineWrap(true);
 
-//        aboutField.setColumns(5);
-
+        aboutField.setColumns(5);
 
         add(gender);
-        add(pass);
         add(about);
+        add(loginField);
+        add(aboutField);
+        add(check_1);
+        add(check_2);
+        add(check_3);*/
+
+        add(pass);
+
         add(reset);
         add(submit);
 
-        add(loginField);
         add(passField);
-        add(aboutField);
 
-/*        add(check_1);
-        add(check_2);
-        add(check_3);*/
     }
 
     class TextAction extends AbstractAction {
@@ -159,10 +160,10 @@ public class MainPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             passField.setText(passName = "type or generate pass");
-            gender.setText(genderName = "fe/male");
+/*            gender.setText(genderName = "fe/male");
             loginField.setText(logName = "type login...");
             aboutField.setText(infoName = "a few words about Yourself");
-            bg.clearSelection();
+            bg.clearSelection();*/
 
         }
     }
