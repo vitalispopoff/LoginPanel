@@ -1,14 +1,12 @@
 package gui;
 
+import static javax.swing.SwingConstants.*;
+import static pass.Password.generatePass;
+import static javax.swing.AbstractButton.PRESSED_ICON_CHANGED_PROPERTY;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-
-import static javax.swing.AbstractButton.PRESSED_ICON_CHANGED_PROPERTY;
-
 import pass.Password;
-
-import static javax.swing.SwingConstants.*;
 
 public class MainPanel extends JPanel {
 
@@ -18,8 +16,11 @@ public class MainPanel extends JPanel {
     private static int elementHeight = 2;
     private static int textElementWidth = 11;
     private static JTextArea gender;
+    private static JTextField passField;
+    private static JTextField loginField;
+    private static JTextField aboutField;
     private String genderName;
-    private String passName;
+    private String passName = "type or generate pass";
     private String logName;
     private String infoName;
 
@@ -28,7 +29,6 @@ public class MainPanel extends JPanel {
         setLayout(null);
 
         Action actionPassGenerate;
-
 
         Action switchSexTitleToFemale = new TextAction("female");
         JRadioButtonMenuItem female = new JRadioButtonMenuItem(switchSexTitleToFemale);
@@ -50,7 +50,9 @@ public class MainPanel extends JPanel {
         gender.setBounds(((elementWidth * tile) >> 1), tile + (tile >> 1), (tile * elementWidth) >> 1, tile);
 
 
-        JButton pass = new JButton("<html><p align=left><font size=" + (tile / 6) + ">Pass</font></p></html>");
+        Action passGenerate = new PassGenerate();
+        JButton pass = new JButton(passGenerate);
+        pass.setText("<html><p align=left><font size=" + (tile / 6) + ">Pass</font></p></html>");
         pass.setBounds(tile, (elementHeight + 2) * tile, elementWidth * tile, elementHeight * tile);
 
         JButton about = new JButton("<html><p align=left><font size=" + (tile / 6) + ">About</font></p></html>");
@@ -89,13 +91,13 @@ public class MainPanel extends JPanel {
 
         check_2.setSelected(true);
 
-        JTextField loginFieled = new JTextField(logName = "type login...", 32);
-        loginFieled.setBounds((elementWidth + 2) * tile, tile, textElementWidth * tile, elementHeight * tile);
+        loginField = new JTextField(logName = "type login...", 32);
+        loginField.setBounds((elementWidth + 2) * tile, tile, textElementWidth * tile, elementHeight * tile);
 
-        JTextField passField = new JTextField(passName = "type or generate pass", Password.getPasswordLength());
+        passField = new JTextField(passName, Password.getPasswordLength());
         passField.setBounds((elementWidth + 2) * tile, (elementHeight + 2) * tile, textElementWidth * tile, elementHeight * tile);
 
-        JTextField aboutField = new JTextField(infoName = "your short description");
+        aboutField = new JTextField(infoName = "your short description");
         aboutField.setBounds((elementWidth + 2) * tile, (elementHeight * 2 + 3) * tile, textElementWidth * tile, elementHeight * 3 * tile);
 
 
@@ -108,7 +110,7 @@ public class MainPanel extends JPanel {
         add(check_1);
         add(check_2);
         add(check_3);
-        add(loginFieled);
+        add(loginField);
         add(passField);
         add(aboutField);
 
@@ -130,6 +132,24 @@ public class MainPanel extends JPanel {
         }
     }
 
+    class PassGenerate extends AbstractAction{
+        String text;
+
+        PassGenerate(){
+//            if (passField.getText()== passName | passField.getText()=="")
+/*            this.text = generatePass();
+            else this.text = passName;*/
+            this.text = generatePass();
+            System.out.println(passField.);
+        }
+/*            this.text = passField.getText().length()>0? "": generatePass();
+        }   // TODO: switch the logic: ?(check the pass?keep:""):generatePass();*/
+
+        @Override
+        public void actionPerformed(ActionEvent e) {passField.setText(text);
+
+        }
+    }
 
     @Override
     public Dimension getPreferredSize() {
