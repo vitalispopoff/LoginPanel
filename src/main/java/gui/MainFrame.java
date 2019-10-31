@@ -10,7 +10,7 @@ public class MainFrame extends JFrame {
 
 
     public MainFrame(int tile) throws HeadlessException{
-//        this.tile = tile;
+        this.tile = tile;
         setLocation(50,50);
         setResizable(false);
 
@@ -19,5 +19,4 @@ public class MainFrame extends JFrame {
         add(windowPanel);
         pack();
     }
-
 }
