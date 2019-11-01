@@ -11,6 +11,7 @@ class GenderRadioButtons extends MainPanel {
     static JRadioButtonMenuItem female;
     static JRadioButtonMenuItem male;
     static JTextArea gender;
+    static String genderName;
 
     GenderRadioButtons(int tile, int elementWidth) {
         super();
@@ -22,8 +23,8 @@ class GenderRadioButtons extends MainPanel {
         male = new JRadioButtonMenuItem(switchSexTitleToMale);
         male.setBounds(elementWidth * tile + (tile >> 3), tile + (tile >> 1), tile, tile);
 
-        String genderName = "fe/male";
-        gender = new JTextArea(genderName);
+        genderName = "fe/male";
+        gender = new JTextArea(genderName);     // TODO JLabel: https://docs.oracle.com/javase/tutorial/uiswing/components/label.html
         gender.setBackground(new Color(238, 238, 238));
         gender.setBounds(((elementWidth * tile) >> 1), tile + (tile >> 1), (tile * elementWidth) >> 1, tile);
     }

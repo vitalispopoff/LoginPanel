@@ -11,8 +11,10 @@ public class Main {
             MainFrame windowFrame = new MainFrame(16);
             windowFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             windowFrame.setVisible(true);
+
         });
 
     }
 }
+
 
