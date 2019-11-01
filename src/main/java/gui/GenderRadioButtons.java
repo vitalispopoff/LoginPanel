@@ -3,7 +3,6 @@ package gui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-
 import static javax.swing.AbstractButton.PRESSED_ICON_CHANGED_PROPERTY;
 
 public class GenderRadioButtons extends MainPanel {
@@ -11,14 +10,13 @@ public class GenderRadioButtons extends MainPanel {
     int tile;
     int elementWidth;
 
-    JRadioButtonMenuItem female;
-    JRadioButtonMenuItem male;
-    ButtonGroup bg;
-    private static JTextArea gender;
+    static JRadioButtonMenuItem female;
+    static JRadioButtonMenuItem male;
+    static ButtonGroup bg;
+    protected static JTextArea gender;
     private String genderName = "fe/male";
 
-
-    GenderRadioButtons() {
+    GenderRadioButtons(int tile, int elementWidth) {
         super();
 
         Action switchSexTitleToFemale = new TextAction("female");
@@ -29,16 +27,17 @@ public class GenderRadioButtons extends MainPanel {
         male = new JRadioButtonMenuItem(switchSexTitleToMale);
         male.setBounds(elementWidth * tile + (tile >> 3), tile + (tile >> 1), tile, tile);
 
-        add(male);
-        add(female);
-
-        bg = new ButtonGroup();
-        bg.add(female);
-        bg.add(male);
+//        bg = new ButtonGroup();
 
         gender = new JTextArea(genderName);
         gender.setBackground(new Color(238, 238, 238));
         gender.setBounds(((elementWidth * tile) >> 1), tile + (tile >> 1), (tile * elementWidth) >> 1, tile);
+
+/*        add(male);
+        add(female);
+        bg.add(female);
+        bg.add(male);
+        add(gender);*/
 
     }
 
@@ -54,7 +53,6 @@ public class GenderRadioButtons extends MainPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             gender.setText(text);
-            System.out.println(bg.getSelection().toString());
         }
     }
 

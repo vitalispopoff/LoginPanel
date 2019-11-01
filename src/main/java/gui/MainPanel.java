@@ -32,7 +32,7 @@ public class MainPanel extends JPanel {
     MainPanel(int tile) {
         this.tile = tile;
         setLayout(null);
-        new GenderRadioButtons();
+        new GenderRadioButtons(tile, elementWidth);
 
         Action actionPassGenerate;
 
@@ -43,14 +43,15 @@ public class MainPanel extends JPanel {
         Action switchSexTitleToMale = new TextAction("male");
         male = new JRadioButtonMenuItem(switchSexTitleToMale);
         male.setBounds(elementWidth * tile + (tile >> 3), tile + (tile >> 1), tile, tile);
-
-        add(male);
-        add(female);
+*/
+        add(GenderRadioButtons.male);
+        add(GenderRadioButtons.female);
 
         bg = new ButtonGroup();
         bg.add(female);
         bg.add(male);
-
+        add(GenderRadioButtons.gender);
+/*
         gender = new JTextArea(genderName);
         gender.setBackground(new Color(238, 238, 238));
         gender.setBounds(((elementWidth * tile) >> 1), tile + (tile >> 1), (tile * elementWidth) >> 1, tile);
