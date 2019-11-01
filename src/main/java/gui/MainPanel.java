@@ -14,6 +14,8 @@ import pass.Password;
 public class MainPanel extends JPanel {
 
     private int tile;
+    int elementWidth = 5;
+    int elementHeight = 2;
     private static int textElementWidth = 11;
 
     JRadioButtonMenuItem female;
@@ -21,13 +23,10 @@ public class MainPanel extends JPanel {
     ButtonGroup bg;
     private String genderName = "fe/male";
 
-    /*
-    protected static JTextArea gender;
-    private static JTextField passField;
+/*  protected static JTextArea gender;
     private static JTextField loginField;
     private static JTextArea aboutField;
 
-    private String passName = "type or generate pass";
     private String logName = "type login...";
     private String infoName = "a few words about Yourself";*/
 
@@ -37,7 +36,7 @@ public class MainPanel extends JPanel {
 
 //        Action actionPassGenerate;
 
-        int elementWidth = 5;
+
         new GenderRadioButtons(tile, elementWidth);
         add(GenderRadioButtons.male);
         add(GenderRadioButtons.female);
@@ -46,11 +45,15 @@ public class MainPanel extends JPanel {
         bg.add(GenderRadioButtons.male);
         add(GenderRadioButtons.gender);
 
-        int elementHeight = 2;
+
         new CheckBoxes(tile, elementWidth, elementHeight);
         add(CheckBoxes.check_1);
         add(CheckBoxes.check_2);
         add(CheckBoxes.check_3);
+
+        new PassButton(tile, elementWidth, elementHeight, textElementWidth);
+        add(PassButton.pass);
+        add(PassButton.passField);
 
 /*
         JButton about = new JButton("<html><p align=left><font size=" + (tile / 6) + ">About</font></p></html>");
@@ -117,7 +120,7 @@ public class MainPanel extends JPanel {
 
 
 /*
-        add(pass);
+
 
         add(reset);
         add(submit);
@@ -129,18 +132,7 @@ public class MainPanel extends JPanel {
     MainPanel(){
     }
 
-/*    class PassGenerate extends AbstractAction {
-        String text;
 
-        PassGenerate() {
-            this.text = generatePass();
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            passField.setText(text);
-        }
-    }*/
 
 /*    class ResetAction extends AbstractAction {
 
