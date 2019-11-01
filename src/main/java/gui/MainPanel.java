@@ -13,9 +13,7 @@ import pass.Password;
 
 public class MainPanel extends JPanel {
 
-    int tile;
-    private static int elementWidth = 5;
-    private static int elementHeight = 2;
+    private int tile;
     private static int textElementWidth = 11;
 
     JRadioButtonMenuItem female;
@@ -39,6 +37,7 @@ public class MainPanel extends JPanel {
 
 //        Action actionPassGenerate;
 
+        int elementWidth = 5;
         new GenderRadioButtons(tile, elementWidth);
         add(GenderRadioButtons.male);
         add(GenderRadioButtons.female);
@@ -47,6 +46,7 @@ public class MainPanel extends JPanel {
         bg.add(GenderRadioButtons.male);
         add(GenderRadioButtons.gender);
 
+        int elementHeight = 2;
         new CheckBoxes(tile, elementWidth, elementHeight);
         add(CheckBoxes.check_1);
         add(CheckBoxes.check_2);

@@ -4,17 +4,15 @@ import javax.swing.*;
 
 import static javax.swing.SwingConstants.LEFT;
 
-public class CheckBoxes extends MainPanel {
+class CheckBoxes extends MainPanel {
 
-    int tile;
-    int elementWidth;
-    int elementHeight;
     static JCheckBox check_1;
     static JCheckBox check_2;
     static JCheckBox check_3;
 
     CheckBoxes(int tile, int elementWidth, int elementHeight) {
         super();
+
         check_1 = new JCheckBox();
         check_1.setText("<html><p align=left><font  size=" + (tile / 6) + ">Python</font></p></html>");
         check_1.setBounds(tile + (tile >> 3), (elementHeight * 3 + 4) * tile, elementWidth * tile, elementHeight * tile);
