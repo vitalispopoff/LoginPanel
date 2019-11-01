@@ -32,32 +32,20 @@ public class MainPanel extends JPanel {
     MainPanel(int tile) {
         this.tile = tile;
         setLayout(null);
-        new GenderRadioButtons(tile, elementWidth);
 
         Action actionPassGenerate;
 
-/*        Action switchSexTitleToFemale = new TextAction("female");
-        female = new JRadioButtonMenuItem(switchSexTitleToFemale);
-        female.setBounds(tile + (tile >> 3), tile + (tile >> 1), tile, tile);
-
-        Action switchSexTitleToMale = new TextAction("male");
-        male = new JRadioButtonMenuItem(switchSexTitleToMale);
-        male.setBounds(elementWidth * tile + (tile >> 3), tile + (tile >> 1), tile, tile);
-*/
+        new GenderRadioButtons(tile, elementWidth);
         add(GenderRadioButtons.male);
         add(GenderRadioButtons.female);
-
         bg = new ButtonGroup();
-        bg.add(female);
-        bg.add(male);
+        bg.add(GenderRadioButtons.female);
+        bg.add(GenderRadioButtons.male);
         add(GenderRadioButtons.gender);
-/*
-        gender = new JTextArea(genderName);
-        gender.setBackground(new Color(238, 238, 238));
-        gender.setBounds(((elementWidth * tile) >> 1), tile + (tile >> 1), (tile * elementWidth) >> 1, tile);
+
 
         JButton about = new JButton("<html><p align=left><font size=" + (tile / 6) + ">About</font></p></html>");
-        about.setBounds(tile, (elementHeight * 2 + 3) * tile, elementWidth * tile, elementHeight * tile);*/
+        about.setBounds(tile, (elementHeight * 2 + 3) * tile, elementWidth * tile, elementHeight * tile);
 
         Action passGenerate = new PassGenerate();
         JButton pass = new JButton(passGenerate);
@@ -110,7 +98,6 @@ public class MainPanel extends JPanel {
 
         aboutField.setColumns(5);
 
-        add(gender);
         add(about);
         add(loginField);
         add(aboutField);
@@ -150,10 +137,10 @@ public class MainPanel extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             passField.setText(passName = "type or generate pass");
-/*            gender.setText(genderName = "fe/male");
-            loginField.setText(logName = "type login...");
-            aboutField.setText(infoName = "a few words about Yourself");
-            bg.clearSelection();*/
+            GenderRadioButtons.gender.setText(genderName = "fe/male");
+//            loginField.setText(logName = "type login...");
+//            aboutField.setText(infoName = "a few words about Yourself");
+            bg.clearSelection();
 
         }
     }
