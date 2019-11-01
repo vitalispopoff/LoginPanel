@@ -20,7 +20,7 @@ public class MainPanel extends JPanel {
     JRadioButtonMenuItem female;
     JRadioButtonMenuItem male;
     ButtonGroup bg;
-    private static JTextArea gender;
+    protected static JTextArea gender;
     private static JTextField passField;
     private static JTextField loginField;
     private static JTextArea aboutField;
@@ -32,6 +32,7 @@ public class MainPanel extends JPanel {
     MainPanel(int tile) {
         this.tile = tile;
         setLayout(null);
+        new GenderRadioButtons();
 
         Action actionPassGenerate;
 
@@ -125,22 +126,10 @@ public class MainPanel extends JPanel {
 
     }
 
-    class TextAction extends AbstractAction {
+    public MainPanel() {
 
-        String text;
-
-        TextAction(String text) {
-            this.text = text;
-            putValue(PRESSED_ICON_CHANGED_PROPERTY, text);
-        }
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            gender.setText(text);
-//            System.out.println("male "+male.isSelected()+"; female"+female.isSelected());
-            System.out.println(bg.getSelection().toString());
-        }
     }
+
 
     class PassGenerate extends AbstractAction {
         String text;
