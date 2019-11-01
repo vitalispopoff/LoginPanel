@@ -17,23 +17,27 @@ public class MainPanel extends JPanel {
     private static int elementWidth = 5;
     private static int elementHeight = 2;
     private static int textElementWidth = 11;
+
     JRadioButtonMenuItem female;
     JRadioButtonMenuItem male;
     ButtonGroup bg;
+    private String genderName = "fe/male";
+
+    /*
     protected static JTextArea gender;
     private static JTextField passField;
     private static JTextField loginField;
     private static JTextArea aboutField;
-    private String genderName = "fe/male";
+
     private String passName = "type or generate pass";
     private String logName = "type login...";
-    private String infoName = "a few words about Yourself";
+    private String infoName = "a few words about Yourself";*/
 
     MainPanel(int tile) {
         this.tile = tile;
         setLayout(null);
 
-        Action actionPassGenerate;
+//        Action actionPassGenerate;
 
         new GenderRadioButtons(tile, elementWidth);
         add(GenderRadioButtons.male);
@@ -43,7 +47,12 @@ public class MainPanel extends JPanel {
         bg.add(GenderRadioButtons.male);
         add(GenderRadioButtons.gender);
 
+        new CheckBoxes(tile, elementWidth, elementHeight);
+        add(CheckBoxes.check_1);
+        add(CheckBoxes.check_2);
+        add(CheckBoxes.check_3);
 
+/*
         JButton about = new JButton("<html><p align=left><font size=" + (tile / 6) + ">About</font></p></html>");
         about.setBounds(tile, (elementHeight * 2 + 3) * tile, elementWidth * tile, elementHeight * tile);
 
@@ -58,7 +67,8 @@ public class MainPanel extends JPanel {
         reset.setBounds(((elementWidth + 2) * tile), (elementHeight * 5 + 4) * tile, elementWidth * tile, elementHeight * tile);
 
         JButton submit = new JButton("<html><p align=left><font size=" + (tile / 6) + ">Submit</font></p></html>");
-        submit.setBounds(((elementWidth * 2 + 3) * tile), (elementHeight * 5 + 4) * tile, elementWidth * tile, elementHeight * tile);
+        submit.setBounds(((elementWidth * 2 + 3) * tile), (elementHeight * 5 + 4) * tile, elementWidth * tile, elementHeight * tile);*/
+
 /*
         JCheckBox check_1 = new JCheckBox();
         check_1.setText("<html><p align=left><font  size=" + (tile / 6) + ">Python</font></p></html>");
@@ -84,13 +94,13 @@ public class MainPanel extends JPanel {
         check_3.setHorizontalTextPosition(LEFT);
         check_3.setVerticalTextPosition(SwingConstants.CENTER);
 
-        check_2.setSelected(true);
+        check_2.setSelected(true);*/
 
-        loginField = new JTextField(logName, 32);
+/*       loginField = new JTextField(logName, 32);
         loginField.setBounds((elementWidth + 2) * tile, tile, textElementWidth * tile, elementHeight * tile);*/
 
-        passField = new JTextField(passName, Password.getPasswordLength());
-        passField.setBounds((elementWidth + 2) * tile, (elementHeight + 2) * tile, textElementWidth * tile, elementHeight * tile);
+/*        passField = new JTextField(passName, Password.getPasswordLength());
+        passField.setBounds((elementWidth + 2) * tile, (elementHeight + 2) * tile, textElementWidth * tile, elementHeight * tile);*/
 
 /*        aboutField = new JTextArea(infoName);
         aboutField.setBounds((elementWidth + 2) * tile, (elementHeight * 2 + 3) * tile, textElementWidth * tile, elementHeight * 3 * tile);
@@ -105,21 +115,21 @@ public class MainPanel extends JPanel {
         add(check_2);
         add(check_3);*/
 
+
+/*
         add(pass);
 
         add(reset);
         add(submit);
 
-        add(passField);
+        add(passField);*/
 
     }
 
-    public MainPanel() {
-
+    MainPanel(){
     }
 
-
-    class PassGenerate extends AbstractAction {
+/*    class PassGenerate extends AbstractAction {
         String text;
 
         PassGenerate() {
@@ -130,9 +140,9 @@ public class MainPanel extends JPanel {
         public void actionPerformed(ActionEvent e) {
             passField.setText(text);
         }
-    }
+    }*/
 
-    class ResetAction extends AbstractAction {
+/*    class ResetAction extends AbstractAction {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -141,9 +151,12 @@ public class MainPanel extends JPanel {
 //            loginField.setText(logName = "type login...");
 //            aboutField.setText(infoName = "a few words about Yourself");
             bg.clearSelection();
+            CheckBoxes.check_1.setSelected(false);
+            CheckBoxes.check_2.setSelected(true);
+            CheckBoxes.check_3.setSelected(false);
 
         }
-    }
+    }*/
 
     @Override
     public Dimension getPreferredSize() {
@@ -151,15 +164,6 @@ public class MainPanel extends JPanel {
     }
 
 }
-
-
-
-
-
-
-
-
-
 
 /*
  *   ============================================
