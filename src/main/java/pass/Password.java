@@ -6,77 +6,97 @@ import java.util.Random;
 public class Password {
 
     //    static ArrayList<String> finalString;
-    static Random random = new Random();
+    private static Random random = new Random();
 
-//    ============================================================
-//    Password filter buckets
+//  * * *       Pass filter buckets     * * *
 
-    static ArrayList<Character> mainBucket = new ArrayList<>();
-    static ArrayList<Integer> bigLetter = new ArrayList<>();
-    static ArrayList<Integer> smallLetter = new ArrayList<>();
-    static ArrayList<Integer> digit = new ArrayList<>();
-    static ArrayList<Integer> specialCharacter = new ArrayList<>();
-    static ArrayList<Integer>[] listOfChars = new ArrayList[]{bigLetter, smallLetter, digit, specialCharacter};
+    private static ArrayList<Character> mainBucket = new ArrayList<>();
+    private static ArrayList<Integer> bigLetter = new ArrayList<>();
+    private static ArrayList<Integer> smallLetter = new ArrayList<>();
+    private static ArrayList<Integer> digit = new ArrayList<>();
+    private static ArrayList<Integer> specialCharacter = new ArrayList<>();
+    private static ArrayList[] listOfChars = new ArrayList[]{bigLetter, smallLetter, digit, specialCharacter};
+/*
+    private static ArrayList<Integer>[] listOfChars = new ArrayList[]{bigLetter, smallLetter, digit, specialCharacter};
+*/      //  Password:18 - old version
 
-//    ============================================================
-//      Character type charset areas
+//  * * *       Charset areas          * * *
 
-    static int[][][] charts = new int[][][]{{{64, 90 - 64}}, {{97, 122 - 97}}, {{48, 57 - 48}}, {{33, 47 - 33}, {56, 64 - 56}, {91, 96 - 91}, {123, 126 - 122}}};
+    private static int[][][] charts = new int[][][]{
+            {{64, 90 - 64}},            //  *   A   -   Z
+            {{97, 122 - 97}},           //  *   a   -   z
+            {{48, 57 - 48}},            //  *   0   -   9
+            {{33, 47 - 33},             //  *   !   -   /
+                    {56, 64 - 56},      //  *   :   -   @
+                    {91, 96 - 91},      //  *   [   -   '
+                    {123, 126 - 122}    //  *   {   -   ~
+                /*  {128, 146
+                    {151, 154
+                    {157
+                    {159, 169
+                    {171, 173
+                    {181, 184
+                    {189, 190
+                    {198, 199
+                    {208, 216
+                    {251, 253
+                */                 //  *   other areas
+            }
+    };
 
-//    ============================================================
-//    password safety conditions
+//  * * *       Pass safety conditions      * * *
 
-    static int passwordLength = 16;
-    static int bigLetterAmmount = 1;
-    static int smallLetterAmmount = 2;
-    static int digitAmmount = 2;
-    static int specialCharacterAmmount = 2;
-    static int obligatoryDraw = bigLetterAmmount + smallLetterAmmount + digitAmmount + specialCharacterAmmount;
-    //    int additionalDraw = passwordLength - obligatoryDraw;
-    static int[] conditions = new int[]{bigLetterAmmount, smallLetterAmmount, digitAmmount, specialCharacterAmmount};
+    private static int passwordLength = 16;
+    private static int bigLetterAmount = 1;
+    private static int smallLetterAmount = 2;
+    private static int digitAmount = 2;
+    private static int specialCharacterAmount = 2;
+    private static int obligatoryDraw = bigLetterAmount + smallLetterAmount + digitAmount + specialCharacterAmount;
+    private static int[] conditions = new int[]{bigLetterAmount, smallLetterAmount, digitAmount, specialCharacterAmount};
 
     public static int getPasswordLength() {
         return passwordLength;
     }
+/*
 
     public static void setPasswordLength(int passwordLength) {
         Password.passwordLength = passwordLength;
     }
 
-    public static int getBigLetterAmmount() {
-        return bigLetterAmmount;
+    public static int getBigLetterAmount() {
+        return bigLetterAmount;
     }
 
-    public static void setBigLetterAmmount(int bigLetterAmmount) {
-        Password.bigLetterAmmount = bigLetterAmmount;
+    public static void setBigLetterAmount(int bigLetterAmount) {
+        Password.bigLetterAmount = bigLetterAmount;
     }
 
-    public static int getSmallLetterAmmount() {
-        return smallLetterAmmount;
+    public static int getSmallLetterAmount() {
+        return smallLetterAmount;
     }
 
-    public static void setSmallLetterAmmount(int smallLetterAmmount) {
-        Password.smallLetterAmmount = smallLetterAmmount;
+    public static void setSmallLetterAmount(int smallLetterAmount) {
+        Password.smallLetterAmount = smallLetterAmount;
     }
 
-    public static int getDigitAmmount() {
-        return digitAmmount;
+    public static int getDigitAmount() {
+        return digitAmount;
     }
 
-    public static void setDigitAmmount(int digitAmmount) {
-        Password.digitAmmount = digitAmmount;
+    public static void setDigitAmount(int digitAmount) {
+        Password.digitAmount = digitAmount;
     }
 
-    public static int getSpecialCharacterAmmount() {
-        return specialCharacterAmmount;
+    public static int getSpecialCharacterAmount() {
+        return specialCharacterAmount;
     }
 
-    public static void setSpecialCharacterAmmount(int specialCharacterAmmount) {
-        Password.specialCharacterAmmount = specialCharacterAmmount;
+    public static void setSpecialCharacterAmount(int specialCharacterAmount) {
+        Password.specialCharacterAmount = specialCharacterAmount;
     }
+*/      // ?    unused methods
 
-    //    ============================================================
-//        cyryl i metody
+//  * * *       Pass algorithm methods  * * *
 
     static void drawMachine() {
 
@@ -85,26 +105,27 @@ public class Password {
         int part;   // index zakresu w typie
 
         for (int i = 0; i < passwordLength; i++) {
-//            licznik znaków hasła
+            //  * * *       char general counter      * * *
 
             if (i < obligatoryDraw) {
-//                licznik obowiązkowych znaków hasła
+                //  * * *   obligatory char counter     * * *
 
                 if (type < conditions.length) {
-//                    sprawdzenie, czy typ nie przekracza wartości max
+                    //  * * *   max char amount condition   * * *
 
                     if (conditions[type] <= listOfChars[type].size()) {
                         type++;
                         i--;
                     }
-//                    sprawdzenie, czy ilość znaków typu nie przekracza wartości, przeskok do następnego typu
+                    //  * * *   char type switch   * * *
 
                     else {
                         part = random.nextInt(charts[type].length);
-//                        losowanie zakresu znaków wybranego typu
+                        //  * * *   first draw   * * *
 
                         listOfChars[type].add(random.nextInt(charts[type][part][1]) + charts[type][part][0]);
-//                        losowanie i zapis numeru znaku ustalonego typu
+                        //  * * *   second draw   * * *
+
                     }
                 }
             } else {
@@ -153,26 +174,3 @@ public class Password {
 //}
 
 
-/*
- *   ======================================
- *      A-Z :   o64-o90
- *      a-z :   o97-122
- *      0-9 :   o48-o57
- *      !-/ :   o33-o47
- *      :-@ :   o58-o64
- *      [-' :   o91-o96
- *      {-~ :   123-126
- *      spec:   128-148
- *      spec:   151-154
- *      spec:   157
- *   spec:   159-169
- *   spec:   171-173
- *   spec:   181-184
- *   spec:   189-190
- *   spec:   198,199
- *   spec:   208-216
- *   spec:   224-238
- *   spec:   251-253
- *
- *   ======================================
- */  // notes

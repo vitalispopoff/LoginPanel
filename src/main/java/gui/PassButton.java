@@ -13,6 +13,7 @@ class PassButton extends MainPanel {
     static JButton pass;
     static JTextField passField;
     protected static String passName = "type or generate pass";
+    private static String text;
 
 
     PassButton(int tile, int elementWidth, int elementHeight, int textElementWidth) {
@@ -27,10 +28,10 @@ class PassButton extends MainPanel {
     }
 
     static class PassGenerate extends AbstractAction {
-        String text;
+
 
         PassGenerate() {
-            this.text = generatePass();
+            text = generatePass();
         }
 
         @Override

@@ -1,15 +1,7 @@
 package gui;
 
-import static javax.swing.SwingConstants.*;
-import static pass.Password.generatePass;
-import static javax.swing.AbstractButton.PRESSED_ICON_CHANGED_PROPERTY;
-
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import javax.swing.AbstractButton;
-
-import pass.Password;
 
 public class MainPanel extends JPanel {
 
@@ -21,8 +13,6 @@ public class MainPanel extends JPanel {
     JRadioButtonMenuItem female;
     JRadioButtonMenuItem male;
     static ButtonGroup bg;
-
-
 
     MainPanel(int tile) {
         this.tile = tile;
@@ -67,20 +57,12 @@ public class MainPanel extends JPanel {
         new LoginField(tile, elementWidth, elementHeight, textElementWidth);
         add(LoginField.loginField);
 
-
-
         new SubmitButton(tile, elementWidth, elementHeight);
         add(SubmitButton.submit);
-
-
     }
 
     MainPanel() {
     }
-
-
-
-
 
     @Override
     public Dimension getPreferredSize() {
