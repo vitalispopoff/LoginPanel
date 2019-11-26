@@ -7,14 +7,12 @@ import pass.Password;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
-
 class PassButton extends MainPanel {
 
     static JButton pass;
     static JTextField passField;
-    protected static String passName = "type or generate pass";
+    protected static String passName/* = "type or generate pass"*/;
     private static String text;
-
 
     PassButton(int tile, int elementWidth, int elementHeight, int textElementWidth) {
         super();

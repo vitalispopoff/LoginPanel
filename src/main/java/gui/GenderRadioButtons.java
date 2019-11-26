@@ -11,22 +11,39 @@ class GenderRadioButtons extends MainPanel {
     static JRadioButtonMenuItem female;
     static JRadioButtonMenuItem male;
     static JTextArea gender;
+
     static String genderName;
 
     GenderRadioButtons(int tile, int elementWidth) {
         super();
         Action switchSexTitleToFemale = new TextAction("female");
         female = new JRadioButtonMenuItem(switchSexTitleToFemale);
-        female.setBounds(tile + (tile >> 3), tile + (tile >> 1), tile, tile);
+        female.setBounds(
+                tile + (tile >> 3),
+                tile + (tile >> 1),
+                tile,
+                tile
+        );
 
         Action switchSexTitleToMale = new TextAction("male");
         male = new JRadioButtonMenuItem(switchSexTitleToMale);
-        male.setBounds(elementWidth * tile + (tile >> 3), tile + (tile >> 1), tile, tile);
+        male.setBounds(
+                elementWidth * tile + (tile >> 3),
+                tile + (tile >> 1),
+                tile,
+                tile
+        );
 
         genderName = "fe/male";
-        gender = new JTextArea(genderName);     // TODO JLabel: https://docs.oracle.com/javase/tutorial/uiswing/components/label.html
+        gender = new JTextArea(genderName);
+        gender.setEditable(false);
         gender.setBackground(new Color(238, 238, 238));
-        gender.setBounds(((elementWidth * tile) >> 1), tile + (tile >> 1), (tile * elementWidth) >> 1, tile);
+        gender.setBounds(
+                (elementWidth * tile) >> 1,
+                tile + (tile >> 1),
+                (tile * elementWidth) >> 1,
+                tile
+        );
     }
 
     static class TextAction extends AbstractAction {
@@ -41,6 +58,10 @@ class GenderRadioButtons extends MainPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             gender.setText(text);
+        }
+
+        public static String getGender() {
+            return genderName;
         }
     }
 }

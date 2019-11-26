@@ -10,8 +10,7 @@ public class MainPanel extends JPanel {
     int elementHeight = 2;
     private static int textElementWidth = 11;
 
-    JRadioButtonMenuItem female;
-    JRadioButtonMenuItem male;
+    public static GenderRadioButtons gender;
     static ButtonGroup bg;
 
     MainPanel(int tile) {
@@ -20,7 +19,7 @@ public class MainPanel extends JPanel {
 
 //  * * *   RADIOBUTTONS : GENDER   * * *
 
-        new GenderRadioButtons(tile, elementWidth);
+        gender = new GenderRadioButtons(tile, elementWidth);
         add(GenderRadioButtons.male);
         add(GenderRadioButtons.female);
         bg = new ButtonGroup();
@@ -31,9 +30,9 @@ public class MainPanel extends JPanel {
 //  * * *   CHECKBOXES : LANGUAGES  * * *
 
         new CheckBoxes(tile, elementWidth, elementHeight);
+        add(CheckBoxes.check_0);
         add(CheckBoxes.check_1);
         add(CheckBoxes.check_2);
-        add(CheckBoxes.check_3);
 
 //  * * *   BUTTON/FIELD : PASSWORD * * *
 
@@ -43,9 +42,9 @@ public class MainPanel extends JPanel {
 
 //  * * *   BUTTON/FIELD : ABOUT    * * *
 
-        new AboutButton(tile, elementWidth, elementHeight, textElementWidth);
+        new AboutField(tile, elementWidth, elementHeight, textElementWidth);
 //        add(AboutButton.about);
-        add(AboutButton.aboutField);
+        add(AboutField.aboutField);
 
 //  * * *   BUTTON      : RESET     * * *
 
@@ -70,18 +69,4 @@ public class MainPanel extends JPanel {
     }
 
 }
-
-/*
- *   ============================================
- *       sources:
- *
- *       https://docs.oracle.com/javase/tutorial/uiswing/components/button.html#radiobutton
- *
- *
- *
- *
- *
- *
- *   ============================================
- */  //notes
 

@@ -1,19 +1,23 @@
 package gui;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 
-public class AboutButton extends MainPanel {
+public class AboutField extends MainPanel {
 
     static JButton about;
     static JTextArea aboutField;
     static String infoName = "a few words about Yourself";
 
-    AboutButton(int tile, int elementWidth, int elementHeight, int textElementWidth) {
+    AboutField(int tile, int elementWidth, int elementHeight, int textElementWidth) {
         super();
 
-        aboutField = new JTextArea(infoName);
+        aboutField = new JTextArea();
+        aboutField.setText(infoName);
         aboutField.setBounds((elementWidth + 2) * tile, (elementHeight * 2 + 3) * tile, textElementWidth * tile, elementHeight * 3 * tile);
+        aboutField.setBorder(new LineBorder(new Color(0,0,0),1,true));
         aboutField.setLineWrap(true);
 
 //        System.out.println(aboutField.getRegisteredKeyStrokes().toString());

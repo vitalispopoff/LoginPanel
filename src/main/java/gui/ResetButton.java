@@ -25,11 +25,11 @@ class ResetButton extends MainPanel {
             PassButton.passField.setText(PassButton.passName = "type or generate pass");
             GenderRadioButtons.gender.setText(GenderRadioButtons.genderName = "fe/male");
             LoginField.loginField.setText(LoginField.logName = "type login...");
-            AboutButton.aboutField.setText(AboutButton.infoName = "a few words about Yourself");
+            AboutField.aboutField.setText(AboutField.infoName = "a few words about Yourself");
             MainPanel.bg.clearSelection();
-            CheckBoxes.check_1.setSelected(false);
-            CheckBoxes.check_2.setSelected(true);
-            CheckBoxes.check_3.setSelected(false);
+            CheckBoxes.check_0.setSelected(false);
+            CheckBoxes.check_1.setSelected(true);
+            CheckBoxes.check_2.setSelected(false);
         }
     }
 }

@@ -23,7 +23,7 @@ public class Password {
 //  * * *       Charset areas          * * *
 
     private static int[][][] charts = new int[][][]{
-            {{64, 90 - 64}},            //  *   A   -   Z
+            {{64, 90 - 64}},            //  *   A   -   Z   (1st int: start index, 2nd int: length)
             {{97, 122 - 97}},           //  *   a   -   z
             {{48, 57 - 48}},            //  *   0   -   9
             {{33, 47 - 33},             //  *   !   -   /
@@ -46,11 +46,11 @@ public class Password {
 
 //  * * *       Pass safety conditions      * * *
 
-    private static int passwordLength = 16;
+    private static int passwordLength = 8;
     private static int bigLetterAmount = 1;
-    private static int smallLetterAmount = 2;
-    private static int digitAmount = 2;
-    private static int specialCharacterAmount = 2;
+    private static int smallLetterAmount = 1;
+    private static int digitAmount = 1;
+    private static int specialCharacterAmount = 1;
     private static int obligatoryDraw = bigLetterAmount + smallLetterAmount + digitAmount + specialCharacterAmount;
     private static int[] conditions = new int[]{bigLetterAmount, smallLetterAmount, digitAmount, specialCharacterAmount};
 
@@ -169,8 +169,31 @@ public class Password {
         System.out.println(cache);
 
     }*/
+
+public static int passwordLength(){
+    return passwordLength;
 }
 
-//}
+    public static int getBigLetterAmount() {
+        return bigLetterAmount;
+    }
+
+    public static int getSmallLetterAmount() {
+        return smallLetterAmount;
+    }
+
+    public static int getDigitAmount() {
+        return digitAmount;
+    }
+
+    public static int getSpecialCharacterAmount() {
+        return specialCharacterAmount;
+    }
+
+    public static int[][][] getCharts(){
+    return charts;
+    }
+}
+
 
 
